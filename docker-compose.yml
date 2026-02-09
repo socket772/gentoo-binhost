@@ -1,6 +1,6 @@
 services:
-  binhost-citadel:
-    container_name: binhost-citadel
+  binhost:
+    container_name: citadel
     build: .
     restart: unless-stopped
     ports:
@@ -17,7 +17,6 @@ services:
       - ./scripts/binhost.sh:/usr/local/bin/binhost.sh
       - ./scripts/setup_binhost.sh:/usr/local/bin/setup_binhost.sh
       - ./scripts/update_binhost.sh:/usr/local/bin/update_binhost.sh
-      - ./configs/make.conf:/etc/portage/make.conf
       - ./configs/nginx.conf:/etc/nginx/nginx.conf
       - ./configs/ccache.conf:/etc/ccache.conf
 

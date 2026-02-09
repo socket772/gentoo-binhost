@@ -1,12 +1,8 @@
-FROM gentoo/stage3:systemd-20260202
+FROM gentoo/stage3:systemd-20260209
 
 # Sovrascrive il PATH includendo i binari di ccache all'inizio
 # Nota: in Docker usiamo semplicemente :${PATH}
 ENV PATH="/usr/lib/ccache/bin:${PATH}"
-
-# Copio la configurazione per il container
-COPY "./configs//make.conf" "/etc/portage/make.conf"
-COPY "./configs/ccache.conf" "/etc/ccache.conf"
 
 # Installiamo i tool di base necessari per gestire il binhost
 RUN emerge-webrsync && \
