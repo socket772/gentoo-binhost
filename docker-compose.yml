@@ -1,0 +1,52 @@
+services:
+  binhost-citadel:
+    container_name: binhost-citadel
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    # command: tail -f /dev/null
+    volumes:
+      # Configurazioni chroot
+      - ./chroot-configs/make.conf:/binhost/etc/portage/make.conf
+      - ./configs/ccache.conf:/binhost/etc/ccache.conf
+      - ./chroot-configs/package.use:/binhost/etc/portage/package.use
+
+      # Configurazioni container
+      - ./scripts/builder.sh:/usr/local/bin/builder.sh
+      - ./scripts/binhost.sh:/usr/local/bin/binhost.sh
+      - ./scripts/setup_binhost.sh:/usr/local/bin/setup_binhost.sh
+      - ./scripts/update_binhost.sh:/usr/local/bin/update_binhost.sh
+      - ./configs/make.conf:/etc/portage/make.conf
+      - ./configs/nginx.conf:/etc/nginx/nginx.conf
+      - ./configs/ccache.conf:/etc/ccache.conf
+
+      # Persistenza binhost
+      - gentoo_chroot_distfiles:/binhost/var/cache/distfiles
+      - gentoo_chroot_packages:/binhost/var/cache/binpkgs
+      - gentoo_chroot_portage:/binhost/var/db/repos/gentoo
+      - gentoo_chroot_ccache:/binhost/var/cache/ccache
+
+      # Persistenza container
+      - gentoo_distfiles:/var/cache/distfiles
+      - gentoo_packages:/var/cache/binpkgs
+      - gentoo_portage:/var/db/repos/gentoo
+      - gentoo_ccache:/var/cache/ccache
+
+    environment:
+      - MAKEOPTS=-j16
+    ulimits:
+      nofile:
+        soft: 8192
+        hard: 8192
+      stack: 65536
+
+volumes:
+  gentoo_chroot_distfiles:
+  gentoo_chroot_packages:
+  gentoo_chroot_portage:
+  gentoo_chroot_ccache:
+  gentoo_distfiles:
+  gentoo_packages:
+  gentoo_portage:
+  gentoo_ccache:
