@@ -1,17 +1,26 @@
 #!/bin/bash
-# SETUP_BINHOST.SH - Da eseguire una tantum o dopo modifiche al make.conf
+set -e
 
 echo ">>> Sincronizzazione repository..."
-emerge --sync
+emaint sync --auto
+
+export ROOT="/binhost"
+export PORTAGE_CONFIGROOT="/binhost"
+export PKGDIR="/binhost/var/cache/binpkgs/"
+
+eselect --root="/binhost" profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
 
 echo ">>> Installo i pacchetti"
-ROOT="/binhost" PORTAGE_CONFIGROOT="/binhost" PKGDIR="/binhost/var/cache/binpkgs/" emerge -uDdN --buildpkg --usepkg --keep-going -j4 --root-deps --with-bdeps=y \
+emerge -uDN --buildpkg --usepkg --keep-going -j4 --root-deps \
+    --with-bdeps=y --autounmask=y \
+    --autounmask-backtrack=y --autounmask-continue \
     @world \
     kde-plasma/plasma-meta \
     kde-apps/kde-apps-meta \
     sys-kernel/gentoo-kernel-bin \
     sys-block/io-scheduler-udev-rules \
-    net-wireless/iw net-wireless/wpa_supplicant \
+    net-wireless/iw \
+    net-wireless/wpa_supplicant \
     net-misc/dhcpcd \
     sys-fs/dosfstools \
     sys-fs/btrfs-progs \
@@ -20,6 +29,7 @@ ROOT="/binhost" PORTAGE_CONFIGROOT="/binhost" PKGDIR="/binhost/var/cache/binpkgs
     sys-apps/systemd-utils \
     sys-apps/systemd
 
+etc-update --automode -5
 
 echo ">>> Rigenero l'indice"
 emaint binhost --fix
