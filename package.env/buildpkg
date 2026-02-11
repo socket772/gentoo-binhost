@@ -1,0 +1,13 @@
+# File di esempio per abilitare o disabilitare buildpkg
+
+# Build binpkgs for these packages
+#app-office/libreoffice buildpkg-yes.conf
+#llvm-core/llvm buildpkg-yes.conf
+#sys-devel/gcc buildpkg-yes.conf
+#sys-kernel/vanilla-kernel buildpkg-yes.conf
+
+# Exclude packages matching these patterns from binpkg building
+*/*-bin buildpkg-no.conf
+acct-*/* buildpkg-no.conf
+app-alternatives/* buildpkg-no.conf
+virtual/* buildpkg-no.conf
