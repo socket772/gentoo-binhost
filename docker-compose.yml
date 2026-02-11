@@ -1,37 +1,25 @@
 services:
-  binhost:
-    container_name: citadel
+  citadel:
     build: .
+    container_name: binhost
     restart: unless-stopped
-    ports:
-      - "8080:80"
-    # command: tail -f /dev/null
     volumes:
-      # Configurazioni chroot
-      - ./chroot-configs/make.conf:/binhost/etc/portage/make.conf
-      - ./chroot-configs/package.use:/binhost/etc/portage/package.use
+      # Configurazione Portage (fondamentale)
+      - ./make.conf:/etc/portage/make.conf
+      - ./package.use:/etc/portage/package.use
+      - ./package.env:/etc/portage/package.env
+      - ./portage-env:/etc/portage/env
 
-      # Configurazioni container
-      - ./scripts/binhost.sh:/usr/local/bin/binhost.sh
-      - ./configs/nginx.conf:/etc/nginx/nginx.conf
-      - ./configs/make.conf:/etc/portage/make.conf
+      # Persistenza (Cache e Repo)
+      - gentoo-distfiles:/var/cache/distfiles
+      - gentoo-portage:/var/db/repos/gentoo
 
-      # Persistenza binhost
-      - gentoo_chroot_distfiles:/binhost/var/cache/distfiles
-      - gentoo_chroot_packages:/binhost/var/cache/binpkgs
-      - gentoo_portage:/binhost/var/db/repos/gentoo
-
-      # Persistenza container
-      - gentoo_portage:/var/db/repos/gentoo
-
-    environment:
-      - MAKEOPTS=-j16
-    ulimits:
-      nofile:
-        soft: 8192
-        hard: 8192
+      # Output: Qui finiranno i tuoi pacchetti binari
+      - gentoo-binpackages:/var/www/binhost
+    ports:
+      - "9090:80"
 
 volumes:
-  gentoo_chroot_distfiles:
-  gentoo_chroot_packages:
-  gentoo_portage:
+  gentoo-distfiles:
+  gentoo-portage:
+  gentoo-binpackages:
