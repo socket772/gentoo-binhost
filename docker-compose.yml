@@ -18,6 +18,12 @@ services:
       - gentoo-binpackages:/var/www/binhost
     ports:
       - "9090:80"
+    environment:
+      - MAKEOPTS=-j16
+    ulimits:
+      nofile:
+        soft: 8192
+        hard: 8192
 
 volumes:
   gentoo-distfiles:

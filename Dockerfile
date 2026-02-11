@@ -6,7 +6,8 @@ RUN emaint sync --auto
 # Installazione Nginx e tool base
 RUN emerge --oneshot --autounmask=y --autounmask-continue \
     www-servers/nginx \
-    app-portage/gentoolkit
+    app-portage/gentoolkit \
+    app-misc/mime-types
 
 # Creiamo la directory dei pacchetti
 RUN mkdir -p "/var/www/binhost" "/run/nginx/" "/etc/portage/package.env"
