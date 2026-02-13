@@ -4,16 +4,20 @@ FROM gentoo/stage3:systemd-20260209
 RUN emaint sync --auto
 
 # Installazione Nginx e tool base
-RUN emerge --oneshot --autounmask=y --autounmask-continue \
+RUN emerge --oneshot --autounmask=y --jobs=5 --autounmask-continue \
     www-servers/nginx \
     app-portage/gentoolkit \
     app-misc/mime-types
 
 # Creiamo la directory dei pacchetti
-RUN mkdir -p "/var/www/binhost" "/run/nginx/" "/etc/portage/package.env"
+RUN mkdir -p "/var/www/binhost" "/run/nginx/" "/etc/portage/package.env" "/etc/kernel/config.d"
 
 # Copiamo la configurazione Nginx
 COPY "nginx.conf" "/etc/nginx/nginx.conf"
+
+COPY "./rsyncd.conf" "/etc/rsyncd.conf"
+
+COPY "./entrypoint.sh" "/usr/local/bin/entrypoint.sh"
 
 RUN chown -R nginx:nginx "/run/nginx" "/var/log/nginx"
 
@@ -21,11 +25,14 @@ RUN chown -R nginx:nginx "/run/nginx" "/var/log/nginx"
 # Questo è il profilo stabile attuale per Plasma 6
 RUN eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
 
-# Esponiamo la porta
+# Abilita il daemon di rsyncd
+RUN systemctl enable --now rsyncd.service
+
+# Esponiamo la porta di nginx e rsyncd
 EXPOSE 80
+EXPOSE 873
 
 # Verifica sintassi Nginx durante la build
 RUN nginx -t
 
-# Avvio Nginx
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ] 

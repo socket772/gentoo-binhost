@@ -9,5 +9,6 @@
 # Exclude packages matching these patterns from binpkg building
 */*-bin buildpkg-no.conf
 acct-*/* buildpkg-no.conf
-app-alternatives/* buildpkg-no.conf
+# app-alternatives/* buildpkg-no.conf
 virtual/* buildpkg-no.conf
+sys-kernel/gentoo-kernel-bin buildpkg-no.conf

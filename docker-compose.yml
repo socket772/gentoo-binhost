@@ -9,15 +9,22 @@ services:
       - ./package.use:/etc/portage/package.use
       - ./package.env:/etc/portage/package.env
       - ./portage-env:/etc/portage/env
+      - ./scripts/update.sh:/usr/local/bin/update.sh
+      - ./scripts/install.sh:/usr/local/bin/install.sh
+      - ./scripts/setup-kernel-source.sh:/usr/local/bin/setup-kernel-source.sh
+      - ./kernel-config.d:/etc/kernel/config.d
 
       # Persistenza (Cache e Repo)
-      - gentoo-distfiles:/var/cache/distfiles
-      - gentoo-portage:/var/db/repos/gentoo
+      - distfiles:/var/cache/distfiles
+      - portage:/var/db/repos/gentoo
+      - db-pkg:/var/db/pkg
+      - src:/usr/src
 
       # Output: Qui finiranno i tuoi pacchetti binari
-      - gentoo-binpackages:/var/www/binhost
+      - binpackages:/var/www/binhost
     ports:
       - "9090:80"
+      - "9091:873"
     environment:
       - MAKEOPTS=-j16
     ulimits:
@@ -26,6 +33,8 @@ services:
         hard: 8192
 
 volumes:
-  gentoo-distfiles:
-  gentoo-portage:
-  gentoo-binpackages:
+  distfiles:
+  portage:
+  binpackages:
+  db-pkg:
+  src:
