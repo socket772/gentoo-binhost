@@ -33,7 +33,8 @@ emerge --update --deep --newuse --changed-use --ask --with-bdeps=y --autounmask-
     dev-libs/openssl \
     media-libs/libpulse \
     kde-plasma/xdg-desktop-portal-kde \
-    sys-kernel/gentoo-sources
+    sys-kernel/gentoo-sources \
+    dev-db/mariadb-connector-c
     
 
 # eselect kernel set 1

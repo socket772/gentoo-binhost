@@ -24,7 +24,7 @@ RUN chown -R nginx:nginx "/run/nginx" "/var/log/nginx"
 
 # Impostiamo il profilo corretto (Plasma + Systemd)
 # Questo è il profilo stabile attuale per Plasma 6
-# RUN eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
+RUN eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
 
 # Abilita il daemon di rsyncd
 RUN systemctl enable --now rsyncd.service
