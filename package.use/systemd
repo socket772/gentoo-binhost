@@ -1,2 +1,2 @@
 sys-apps/systemd boot cryptsetup
-sys-kernel/installkernel dracut
+sys-kernel/installkernel dracut systemd-boot

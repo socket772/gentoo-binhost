@@ -1,1 +1,2 @@
-kde-plasma/plasma-meta qt5 wacom bluetooth
+kde-plasma/plasma-meta qt5 wacom bluetooth xwayland
+sys-libs/zlib minizip

@@ -1,4 +1,4 @@
-FROM gentoo/stage3:systemd-20260209
+FROM gentoo/stage3:amd64-desktop-systemd
 
 # Sincronizzazione iniziale
 RUN emaint sync --auto
@@ -7,7 +7,8 @@ RUN emaint sync --auto
 RUN emerge --oneshot --autounmask=y --jobs=5 --autounmask-continue \
     www-servers/nginx \
     app-portage/gentoolkit \
-    app-misc/mime-types
+    app-misc/mime-types \
+    dev-libs/elfutils
 
 # Creiamo la directory dei pacchetti
 RUN mkdir -p "/var/www/binhost" "/run/nginx/" "/etc/portage/package.env" "/etc/kernel/config.d"
@@ -23,7 +24,7 @@ RUN chown -R nginx:nginx "/run/nginx" "/var/log/nginx"
 
 # Impostiamo il profilo corretto (Plasma + Systemd)
 # Questo è il profilo stabile attuale per Plasma 6
-RUN eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
+# RUN eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
 
 # Abilita il daemon di rsyncd
 RUN systemctl enable --now rsyncd.service

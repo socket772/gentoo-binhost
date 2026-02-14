@@ -1,9 +1,15 @@
 #!/bin/bash
 set -e
 
-emerge --update --deep --newuse --changed-use --ask @world \
+eselect profile set default/linux/amd64/23.0/desktop/plasma/systemd
+
+emerge --update --deep --newuse --changed-use --ask --with-bdeps=y --autounmask-backtrack=y \
+    sys-kernel/gentoo-kernel
+
+emerge --update --deep --newuse --changed-use --ask --with-bdeps=y --autounmask-backtrack=y @world \
     kde-plasma/plasma-meta \
     sys-apps/ripgrep net-fs/nfs-utils \
+    media-libs/tiff \
     net-fs/samba \
     sys-apps/dmidecode \
     app-text/aha \
@@ -22,21 +28,22 @@ emerge --update --deep --newuse --changed-use --ask @world \
     net-wireless/iw \
     net-wireless/wpa_supplicant \
     sys-kernel/linux-firmware \
-    sys-kernel/installkernel \
-    sys-kernel/gentoo-kernel \
     sys-apps/flatpak \
-    sys-kernel/gentoo-sources \
     dev-libs/elfutils \
-    dev-libs/openssl
+    dev-libs/openssl \
+    media-libs/libpulse \
+    kde-plasma/xdg-desktop-portal-kde \
+    sys-kernel/gentoo-sources
+    
 
-eselect kernel set 1
+# eselect kernel set 1
 
-cd /usr/src/linux
+# cd /usr/src/linux
 
 # make defconfig
 
-make clean
+# make clean
 
-make modules_prepare
+# make modules_prepare
 
 emaint binhost --fix
