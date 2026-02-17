@@ -13,11 +13,17 @@ services:
       - ./scripts/update.sh:/usr/local/bin/update.sh
       - ./scripts/install.sh:/usr/local/bin/install.sh
       - ./scripts/setup-kernel-source.sh:/usr/local/bin/setup-kernel-source.sh
-      - ./kernel-config.d:/etc/kernel/config.d
+      - ./savedconfig:/etc/portage/savedconfig
+
+      # Copia in /var/www/binhost/ i file da condividere
+      - ./make.conf:/var/www/binhost/_custom-files/make.conf
+      - ./package.use:/var/www/binhost/_custom-files/package.use
+      - ./package.env:/var/www/binhost/_custom-files/package.env
+      - ./portage-env:/var/www/binhost/_custom-files/env
 
       # Persistenza (Cache e Repo)
       - distfiles:/var/cache/distfiles
-      - portage:/var/db/repos/gentoo
+      - db-repos:/var/db/repos/gentoo
       - db-pkg:/var/db/pkg
       - src:/usr/src
       - lib-modules:/usr/lib/modules
@@ -36,7 +42,7 @@ services:
 
 volumes:
   distfiles:
-  portage:
+  db-repos:
   binpackages:
   db-pkg:
   src:
