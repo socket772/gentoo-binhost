@@ -1,7 +1,7 @@
 FROM gentoo/stage3:amd64-desktop-systemd
 
 # Creiamo la directory per i file di configurazione
-RUN mkdir -p "/var/www/binhost" "/run/nginx/" "/etc/portage/package.env" "/etc/kernel/config.d" "/var/www/binhost/custom-files"
+RUN mkdir -p "/var/www/binhost" "/run/nginx/" "/etc/portage/package.env" "/etc/kernel/config.d" "/var/www/binhost/_custom-files" "/usr/local/bin/"
 
 # Copio il package use (serve per nginx)
 COPY "./package.use/" "/etc/portage/package.use/"
@@ -22,7 +22,7 @@ RUN emerge --jobs=5 \
 COPY "./rsyncd.conf" "/etc/rsyncd.conf"
 
 # Copio l'entrypoint di docker
-COPY "./entrypoint.sh" "/usr/local/bin/entrypoint.sh"
+COPY "./entrypoint.sh" "/entrypoint.sh"
 
 # Copiamo la configurazione Nginx
 COPY "nginx.conf" "/etc/nginx/nginx.conf"
@@ -38,4 +38,4 @@ EXPOSE 873
 RUN nginx -t
 
 # Avvio il container
-ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ] 
+ENTRYPOINT [ "/entrypoint.sh" ] 

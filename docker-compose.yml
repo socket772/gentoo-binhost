@@ -10,16 +10,8 @@ services:
       - ./package.use:/etc/portage/package.use
       - ./package.env:/etc/portage/package.env
       - ./portage-env:/etc/portage/env
-      - ./scripts/update.sh:/usr/local/bin/update.sh
-      - ./scripts/install.sh:/usr/local/bin/install.sh
-      - ./scripts/setup-kernel-source.sh:/usr/local/bin/setup-kernel-source.sh
+      - ./scripts/:/usr/local/bin/
       - ./savedconfig:/etc/portage/savedconfig
-
-      # Copia in /var/www/binhost/ i file da condividere
-      - ./make.conf:/var/www/binhost/_custom-files/make.conf
-      - ./package.use:/var/www/binhost/_custom-files/package.use
-      - ./package.env:/var/www/binhost/_custom-files/package.env
-      - ./portage-env:/var/www/binhost/_custom-files/env
 
       # Persistenza (Cache e Repo)
       - distfiles:/var/cache/distfiles
