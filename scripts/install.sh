@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-emerge --update --with-bdeps=y --newuse --changed-use @world
+emerge --ask --update --with-bdeps=y --newuse --changed-use @world
 
 emerge --ask \
     sys-kernel/gentoo-kernel \
@@ -24,7 +24,7 @@ emerge --ask \
     dev-libs/openssl \
     sys-apps/flatpak \
     app-misc/fastfetch \
-    dev-libs/json \
+    dev-libs/json-c \
     sys-apps/systemd \
     kde-plasma/plasma-meta
 
