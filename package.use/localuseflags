@@ -1,0 +1,66 @@
+# CPU FLAGS specifiche per il mio processore (sono l'unione tra binhost e target)
+*/* cpu_flags_x86: aes avx avx2 bmi1 bmi2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3
+
+# Necessaria per la scheda video integrata del mio target
+*/* VIDEO_CARDS: -* amdgpu radeonsi radeon
+
+# Localizzazione
+*/* L10N: -* en en-US it
+
+# Configurazione di fastfetch
+app-misc/fastfetch wayland vulkan opencl opengl ddcutil
+
+# Serve per fare build custom del kernel
+sys-kernel/gentoo-kernel savedconfig
+
+# Abilita il blocco schermo di kwin
+kde-plasma/kwin lock
+kde-plasma/kwin-x11 lock
+
+# Serve per la configurazione di nginx sul binhost
+app-misc/mime-types nginx
+
+# Abilitazione di systemd-boot e root criptata
+sys-apps/systemd boot cryptsetup tpm
+sys-kernel/installkernel dracut systemd-boot
+
+# Abilitazione xwayland, plugin in qt5, tavolette grafiche wacom
+kde-plasma/plasma-meta qt5 wacom xwayland
+
+# Abilitazione diverse periferiche, come tavolette grafiche, touchpad e controller
+kde-plasma/plasma-desktop input_devices_wacom input_devices_joystick input_devices_evdev input_devices_libinput input_devices_synaptics
+
+# Selezione applicazioni volute di kde
+kde-apps/kde-apps-meta -education -games -multimedia
+
+# Disabilita bittorrent
+kde-apps/kdenetwork-meta -bittorrent
+
+# Abilita compressione
+kde-apps/kdeutils-meta 7zip gpg lrz rar
+
+# Server audio scelto con plugin per jack, alsa e pulseaudio
+media-video/pipewire jack-client libcamera sound-server pipewire-alsa pulseaudio sound-server
+
+sys-libs/zlib minizip
+
+# Configurazione di rete di networkmanager usando dhcpcd
+net-misc/networkmanager dhcpcd
+
+# Configurazione di zsh
+app-shells/zsh caps pcre gdbm
+
+# Rimozione invio mail per sudo
+app-admin/sudo -sendmail
+
+# Rimozione funzioni extra di keepassxc
+app-admin/keepassxc -keyring -network -ssh-agent
+
+# Necessarie per diverse dipendenze
+sys-devel/gcc objc
+dev-qt/qtpositioning geoclue
+gnustep-base/gnustep-make native-exceptions
+
+# Necessarie per evitare dipendenze cicliche (possono essere rimosse se gia risolte)
+# media-libs/tiff -webp
+# dev-python/pillow -truetype

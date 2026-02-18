@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-emerge --ask --update --with-bdeps=y --newuse --changed-use @world
+emerge --ask --update --with-bdeps=y --newuse --deep --changed-use @world
 
 emerge --ask \
     sys-kernel/gentoo-kernel \
@@ -26,34 +26,12 @@ emerge --ask \
     app-misc/fastfetch \
     dev-libs/json-c \
     sys-apps/systemd \
-    kde-plasma/plasma-meta
-
-# emerge kde-plasma/plasma-meta \
-#     sys-apps/ripgrep net-fs/nfs-utils \
-#     media-libs/tiff \
-#     net-fs/samba \
-#     sys-apps/dmidecode \
-#     app-text/aha \
-#     sys-apps/fwupd \
-#     sys-apps/pciutils \
-#     dev-util/vulkan-tools \
-#     app-misc/wayland-utils \
-#     dev-libs/wayland \
-#     sys-apps/mlocate \
-#     sys-apps/flatpak \
-#     dev-libs/elfutils \
-#     media-libs/libpulse \
-#     dev-db/mariadb-connector-c
-    
-
-# eselect kernel set 1
-
-# cd /usr/src/linux
-
-# make defconfig
-
-# make clean
-
-# make modules_prepare
+    kde-plasma/plasma-meta \
+    kde-apps/kde-apps-meta \
+    app-admin/keepassxc \
+    app-admin/sudo \
+    app-shells/zsh \
+    app-shells/zsh-completions \
+    app-shells/gentoo-zsh-completions
 
 emaint binhost --fix
