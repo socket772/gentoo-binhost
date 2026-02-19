@@ -9,6 +9,7 @@ services:
       - ./rsyncd.conf:/etc/rsyncd.conf
       - ./package.use:/etc/portage/package.use
       - ./package.env:/etc/portage/package.env
+      - ./package.accept_keywords:/etc/portage/package.accept_keywords
       - ./portage-env:/etc/portage/env
       - ./scripts/:/usr/local/bin/
       - ./savedconfig:/etc/portage/savedconfig

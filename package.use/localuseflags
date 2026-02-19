@@ -25,7 +25,7 @@ sys-apps/systemd boot cryptsetup tpm
 sys-kernel/installkernel dracut systemd-boot
 
 # Abilitazione xwayland, plugin in qt5, tavolette grafiche wacom
-kde-plasma/plasma-meta qt5 wacom xwayland
+kde-plasma/plasma-meta qt5 wacom xwayland discover -crash-handler -firewall -kwallet
 
 # Abilitazione diverse periferiche, come tavolette grafiche, touchpad e controller
 kde-plasma/plasma-desktop input_devices_wacom input_devices_joystick input_devices_evdev input_devices_libinput input_devices_synaptics
@@ -39,8 +39,18 @@ kde-apps/kdenetwork-meta -bittorrent
 # Abilita compressione
 kde-apps/kdeutils-meta 7zip gpg lrz rar
 
+# Disabilita il supporto per fwupdmgr e flatpak per discover
+kde-plasma/discover -firmware -flatpak
+
 # Server audio scelto con plugin per jack, alsa e pulseaudio
 media-video/pipewire jack-client libcamera sound-server pipewire-alsa pulseaudio sound-server
+
+# Impostazioni per firefox
+www-client/firefox -telemetry dbus pulseaudio system-pipewire wasm-sandbox
+media-libs/libvpx postproc
+
+# Abilita npm in nodejs
+net-libs/nodejs npm
 
 sys-libs/zlib minizip
 

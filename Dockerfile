@@ -6,8 +6,11 @@ RUN mkdir -p "/var/www/binhost" "/run/nginx/" "/etc/portage/package.env" "/etc/k
 # Copio il package use (serve per nginx)
 COPY "./package.use/" "/etc/portage/package.use/"
 
+RUN eselect repository remove -f gentoo
+RUN eselect repository add gentoo git "https://github.com/gentoo-mirror/gentoo"
+
 # Sincronizzazione del database
-RUN emaint sync --auto
+RUN emaint -r gentoo sync
 
 # Impostiamo il profilo corretto (Plasma + Systemd)
 # Questo è il profilo stabile attuale per Plasma 6
@@ -17,6 +20,7 @@ RUN eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
 RUN emerge --jobs=5 \
     www-servers/nginx \
     app-portage/gentoolkit
+
 
 # Copio la configurazione del daemod di rsyncd
 COPY "./rsyncd.conf" "/etc/rsyncd.conf"

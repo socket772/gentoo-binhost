@@ -32,6 +32,7 @@ emerge --ask \
     app-admin/sudo \
     app-shells/zsh \
     app-shells/zsh-completions \
-    app-shells/gentoo-zsh-completions
+    app-shells/gentoo-zsh-completions \
+    dev-vcs/git
 
 emaint binhost --fix
