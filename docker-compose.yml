@@ -4,39 +4,24 @@ services:
     container_name: binhost
     restart: unless-stopped
     volumes:
+
+      # Persistenza
+      - stage3-cache:/stage3-cache
+      - gentoo-root:/mnt/gentoo
+
       # Configurazione Portage (fondamentale)
-      - ./make.conf:/etc/portage/make.conf
-      - ./rsyncd.conf:/etc/rsyncd.conf
-      - ./package.use:/etc/portage/package.use
-      - ./package.env:/etc/portage/package.env
-      - ./package.accept_keywords:/etc/portage/package.accept_keywords
-      - ./portage-env:/etc/portage/env
-      - ./scripts/:/usr/local/bin/
-      - ./savedconfig:/etc/portage/savedconfig
+      - ./configs:/configs
 
-      # Persistenza (Cache e Repo)
-      - distfiles:/var/cache/distfiles
-      - db-repos:/var/db/repos/gentoo
-      - db-pkg:/var/db/pkg
-      - src:/usr/src
-      - lib-modules:/usr/lib/modules
-
-      # Output: Qui finiranno i tuoi pacchetti binari
-      - binpackages:/var/www/binhost
     ports:
       - "9090:80"
       - "9091:873"
-    environment:
-      - MAKEOPTS=-j16
     ulimits:
       nofile:
         soft: 8192
         hard: 8192
-
+    tmpfs:
+      - /run
+      - /tmp:mode=1777
 volumes:
-  distfiles:
-  db-repos:
-  binpackages:
-  db-pkg:
-  src:
-  lib-modules:
+  stage3-cache:
+  gentoo-root:
