@@ -1,0 +1,7 @@
+# /etc/systemd/network/80-container-host0.network
+[Match]
+Name=host0
+
+[Network]
+DHCP=yes
+IPForward=yes

@@ -29,6 +29,7 @@ kde-plasma/plasma-meta qt5 wacom xwayland discover -crash-handler -firewall -kwa
 
 # Abilitazione diverse periferiche, come tavolette grafiche, touchpad e controller
 kde-plasma/plasma-desktop input_devices_wacom input_devices_joystick input_devices_evdev input_devices_libinput input_devices_synaptics
+kde-frameworks/kwallet-runtime -legacy-kwallet -man -keyring
 
 # Selezione applicazioni volute di kde
 kde-apps/kde-apps-meta -education -games -multimedia

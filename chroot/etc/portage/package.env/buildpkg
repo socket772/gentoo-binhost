@@ -11,4 +11,3 @@
 acct-*/* buildpkg-no.conf
 # app-alternatives/* buildpkg-no.conf
 virtual/* buildpkg-no.conf
-sys-kernel/gentoo-kernel-bin buildpkg-no.conf

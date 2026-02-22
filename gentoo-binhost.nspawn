@@ -1,0 +1,12 @@
+# /etc/systemd/nspawn/binhost.nspawn
+[Exec]
+Capability=CAP_NET_ADMIN,CAP_IPC_LOCK
+ResolvConf=bind-stub
+Boot=yes
+
+[Network]
+# Senza questo, nspawn non attiva il DHCP interno e il masquerading
+VirtualEthernet=yes
+# Le porte che volevi mappare
+Port=tcp:9090:80
+Port=tcp:9091:873

@@ -1,8 +1,3 @@
-``bash
-# Setup
-/usr/local/bin/setup-kernel-source.sh
-/usr/local/bin/install.sh
-
-# Per aggiornare
-/usr/local/bin/update.sh
-``
+serve systemd
+esegui setup-nspawn.sh per la preparazione. poi entra nella macchina con machinectl ed esegui setup-container.sh
+il setup non è perfetto, meglio eseguire comando per comando
