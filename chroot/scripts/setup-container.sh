@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+ip link set host0 up
+
+systemctl restart systemd-networkd
+
 emaint sync
 
 eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
