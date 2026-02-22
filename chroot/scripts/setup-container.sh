@@ -7,9 +7,9 @@ systemctl restart systemd-networkd
 
 emaint sync
 
-eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
-
 emerge --ask app-eselect/eselect-repository
+
+eselect profile set "default/linux/amd64/23.0/desktop/plasma/systemd"
 
 eselect repository remove -f gentoo
 eselect repository add gentoo git "https://github.com/gentoo-mirror/gentoo"
