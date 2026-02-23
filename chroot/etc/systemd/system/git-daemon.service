@@ -10,7 +10,7 @@ Group=root
 # --base-path: la cartella che contiene i tuoi repo
 # --export-all: permette il clone anche se non c'è il file 'git-daemon-export-ok'
 # --reuseaddr: permette il riavvio rapido del servizio
-ExecStart=/usr/bin/git daemon --reuseaddr --base-path=/var/db/repos --export-all --port=9091< --verbose
+ExecStart=/usr/bin/git daemon --reuseaddr --base-path=/var/db/repos --export-all --port=9091 --verbose
 
 # Riavvia automaticamente il servizio se fallisce
 Restart=always

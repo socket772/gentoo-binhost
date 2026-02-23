@@ -21,5 +21,8 @@ mkdir -p "/run/nginx" "/var/www/binhost"
 
 chown nginx:nginx "/run/nginx"
 
+eselect repository add librewolf git https://codeberg.org/librewolf/gentoo.git
+emaint sync -r librewolf
+
 systemctl enable --now nginx
 systemctl enable --now git-daemon

@@ -64,6 +64,9 @@ app-shells/zsh caps pcre gdbm
 # Rimozione invio mail per sudo
 app-admin/sudo -sendmail
 
+# Configurazione di librewolf
+www-client/librewolf -telemetry -X pulseaudio system-pipewire wasm-sandbox wayland
+
 # Rimozione funzioni extra di keepassxc
 app-admin/keepassxc -keyring -network -ssh-agent
 
