@@ -7,11 +7,9 @@ emerge --ask \
     sys-kernel/gentoo-kernel \
     sys-kernel/linux-firmware \
     sys-kernel/modprobed-db \
-    sys-fs/xfsprogs \
     sys-fs/e2fsprogs \
     sys-fs/dosfstools \
     sys-fs/btrfs-progs \
-    sys-fs/f2fs-tools \
     sys-fs/ntfs3g \
     sys-block/io-scheduler-udev-rules \
     net-wireless/iw \
@@ -33,6 +31,7 @@ emerge --ask \
     app-shells/zsh \
     app-shells/zsh-completions \
     app-shells/gentoo-zsh-completions \
-    dev-vcs/git
+    dev-vcs/git \
+    app-misc/tmux
 
 emaint binhost --fix

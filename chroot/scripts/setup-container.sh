@@ -21,8 +21,7 @@ emerge --ask --update --with-bdeps=y --newuse --deep --changed-use @world
 
 emerge --ask \
     www-servers/nginx \
-    app-portage/gentoolkit \
-    app-eselect/eselect-repository
+    app-portage/gentoolkit
 
 systemctl enable --now nginx
 systemctl enable --now rsyncd
