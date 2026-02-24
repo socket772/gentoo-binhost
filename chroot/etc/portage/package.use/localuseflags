@@ -23,6 +23,7 @@ app-misc/mime-types nginx
 # Abilitazione di systemd-boot e root criptata
 sys-apps/systemd boot cryptsetup tpm
 sys-kernel/installkernel dracut systemd-boot
+sys-kernel/dracut dracut-cpio systemd
 
 # Abilitazione xwayland, plugin in qt5, tavolette grafiche wacom
 kde-plasma/plasma-meta qt5 wacom xwayland discover -crash-handler -firewall -kwallet
