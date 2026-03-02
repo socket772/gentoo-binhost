@@ -13,6 +13,9 @@ kde-*/* -handbook
 # Abilito media-libs/taglib per le applicazioni che lo supportano
 */* taglib
 
+# Rimuovi debug da tutti i pacchetti
+*/* -debug
+
 # Configurazione di fastfetch
 app-misc/fastfetch wayland vulkan opencl opengl ddcutil
 
