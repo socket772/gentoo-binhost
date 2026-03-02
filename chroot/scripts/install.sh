@@ -32,6 +32,20 @@ emerge --ask \
     app-shells/zsh-completions \
     app-shells/gentoo-zsh-completions \
     dev-vcs/git \
-    app-misc/tmux
+    app-misc/tmux \
+    app-shells/zsh \
+    www-client/librewolf \
+    mail-client/thunderbird \
+    app-editors/vscodium \
+    app-arch/xz-utils \
+    app-arch/7zip \
+    app-arch/unzip \
+    app-arch/zip \
+    app-arch/unzip \
+    app-arch/zstd \
+    app-office/libreoffice \
+    dev-games/godot \
+    sys-fs/android-file-transfer-linux \
+    media-video/vlc
 
 emaint binhost --fix

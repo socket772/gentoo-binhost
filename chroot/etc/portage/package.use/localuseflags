@@ -7,6 +7,12 @@
 # Localizzazione
 */* L10N: -* en en-US it
 
+# Rimuovi i manuali dalle cose di kde
+kde-*/* -handbook
+
+# Abilito media-libs/taglib per le applicazioni che lo supportano
+*/* taglib
+
 # Configurazione di fastfetch
 app-misc/fastfetch wayland vulkan opencl opengl ddcutil
 
@@ -31,6 +37,12 @@ kde-plasma/plasma-meta qt5 wacom xwayland discover -crash-handler -firewall -kwa
 # Abilitazione diverse periferiche, come tavolette grafiche, touchpad e controller
 kde-plasma/plasma-desktop input_devices_wacom input_devices_joystick input_devices_evdev input_devices_libinput input_devices_synaptics
 kde-frameworks/kwallet-runtime -legacy-kwallet -man -keyring
+
+# Impostazioni per abilitare android in dolphin
+kde-apps/kio-extras mtp
+
+# Impostazioni android-file-transfer-linux
+sys-fs/android-file-transfer-linux fuse
 
 # Selezione applicazioni volute di kde
 kde-apps/kde-apps-meta -education -games -multimedia
@@ -62,21 +74,56 @@ net-misc/networkmanager dhcpcd
 # Configurazione di zsh
 app-shells/zsh caps pcre gdbm
 
+# impostazioni per vlc
+media-video/vlc -ssl -gcrypt dav1d dbus dvd fontconfig gstreamer jack alsa libnofify libplacebo loudness mad mp3 mpeg ogg opus pulseaudio theora truetype vaapi vdpau wayland x264 x265 bluray archive alsa
+
 # Rimozione invio mail per sudo
 app-admin/sudo -sendmail
 
 # Configurazione di librewolf
 www-client/librewolf -telemetry -X pulseaudio system-pipewire wasm-sandbox wayland
 
+# Configurazione di thunderbird
+mail-client/thunderbird -telemetry -X pulseaudio system-pipewire wasm-sandbox wayland
+
+# Configurazione di chromium
+www-client/chromium -x -hangouts -rar cups qt6
+
 # Configurazione vscodium
 app-editors/vscodium egl wayland
 
+# Configurazione java
+dev-java/openjdk javafx source doc
+
+# Configurazione godot
+media-libs/freetype brotli
+dev-games/godot raycast double-precision
+
+# Configurazione wpa_supplicant per tutti i wifi
+net-wireless/wpa_supplicant tkip wep wps
+
 # Configurazione rust/rust-bin
-dev-lang/rust rust-analyzer rust-src
-dev-lang/rust-bin rust-analyzer rust-src
+dev-lang/rust rust-analyzer rust-src rustfmt
+dev-lang/rust-bin rust-analyzer rust-src rustfmt
+
+# Supporto per kamoso e configurazione
+media-libs/gst-plugins-base theora
+media-plugins/gst-plugins-meta theora v4l
+media-libs/libv4l jpeg qt6
+net-dns/avahi mdnsresponder-compat
+
+# Configurazione Libreoffice
+app-office/libreoffice -mariadb -gtk3 gstreamer kde pdfimport qt6 vulkan
 
 # Rimozione funzioni extra di keepassxc
 app-admin/keepassxc -keyring -network -ssh-agent
+
+# Configurazione vari tipi di compressione
+app-arch/xz-utils pgo
+app-arch/7zip rar
+app-arch/zip bzip2 crypt natspec unicode
+app-arch/unzip bzip2 natspec unicode
+app-arch/zstd lz4 zlib
 
 # Necessarie per diverse dipendenze
 sys-devel/gcc objc
