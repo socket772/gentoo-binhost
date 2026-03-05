@@ -46,6 +46,7 @@ emerge --ask \
     app-office/libreoffice \
     dev-games/godot \
     sys-fs/android-file-transfer-linux \
-    media-video/vlc
+    media-video/vlc \
+    sys-apps/zram-generator
 
 emaint binhost --fix
