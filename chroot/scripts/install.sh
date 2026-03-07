@@ -48,12 +48,14 @@ emerge --ask --noreplace \
     mail-client/thunderbird \
     media-video/vlc \
     net-misc/dhcpcd \
+    net-misc/yt-dlp \
     net-wireless/iw \
     net-wireless/wpa_supplicant \
     sys-apps/dmidecode \
     sys-apps/flatpak \
     sys-apps/fwupd \
     sys-apps/pciutils \
+    sys-apps/ripgrep \
     sys-apps/systemd \
     sys-apps/zram-generator \
     sys-block/io-scheduler-udev-rules \

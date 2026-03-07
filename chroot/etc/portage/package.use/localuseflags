@@ -12,7 +12,7 @@
 */* L10N: -* en en-US it
 
 # Useflags abilitate globalmente
-*/* taglib unicode wayland systemd plasma vulkan gles2 vdpau vaapi bluetooth flatpak systemd-boot screencast pipewire cups X networkmanager sddm seccomp policykit dist-kernel sdl
+*/* taglib unicode wayland systemd plasma vulkan gles2 vdpau vaapi bluetooth flatpak systemd-boot screencast pipewire cups X networkmanager sddm seccomp policykit dist-kernel sdl dbus
 
 # Useflags disabilitate globalmente
 */* -kwallet -debug -handbook -grub -bios -consolekit -gnome -gtk -webengine -telemetry
@@ -54,7 +54,7 @@ media-video/pipewire jack-client libcamera sound-server pipewire-alsa pulseaudio
 app-misc/mime-types nginx
 
 # Impostazioni per firefox
-www-client/firefox dbus pulseaudio system-pipewire wasm-sandbox
+www-client/firefox pulseaudio system-pipewire wasm-sandbox
 media-libs/libvpx postproc
 
 # Abilita npm in nodejs
@@ -73,7 +73,7 @@ net-misc/networkmanager dhcpcd
 app-shells/zsh caps pcre gdbm
 
 # impostazioni per vlc
-media-video/vlc -ssl -gcrypt dav1d dbus dvd fontconfig gstreamer jack alsa libnofify libplacebo loudness mad mp3 mpeg ogg opus pulseaudio theora truetype vaapi vdpau wayland x264 x265 bluray archive alsa
+media-video/vlc -ssl -gcrypt dav1d dvd fontconfig gstreamer jack alsa libnofify libplacebo loudness mad mp3 mpeg ogg opus pulseaudio theora truetype vaapi vdpau wayland x264 x265 bluray archive alsa
 
 # Rimozione invio mail per sudo
 app-admin/sudo -sendmail
