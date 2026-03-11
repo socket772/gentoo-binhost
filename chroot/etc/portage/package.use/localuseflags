@@ -20,14 +20,17 @@
 # Serve per fare build custom del kernel
 sys-kernel/gentoo-kernel savedconfig
 
-# Abilita il blocco schermo di kwin
-kde-plasma/kwin lock
-kde-plasma/kwin-x11 lock
+# Impostazioni per il linux-firmware
+sys-kernel/linux-firmware compress-zstd savedconfig
 
 # Abilitazione di systemd-boot e root criptata
 sys-apps/systemd boot cryptsetup tpm
 sys-kernel/installkernel dracut systemd-boot
 sys-kernel/dracut dracut-cpio systemd
+
+# Abilita il blocco schermo di kwin
+kde-plasma/kwin lock
+kde-plasma/kwin-x11 lock
 
 # Impostazioni plasma-meta
 kde-plasma/plasma-meta qt5 wacom -discover -crash-handler -firewall -browser-integration
@@ -49,6 +52,10 @@ kde-apps/kio-extras mtp ios nsf taglib
 
 # Server audio scelto con plugin per jack, alsa e pulseaudio
 media-video/pipewire jack-client libcamera sound-server pipewire-alsa pulseaudio sound-server
+
+# Configurazione QEMU
+app-emulation/qemu alsa bpf fuse ncurses pulseaudio sdl sdl-image spice ssh systemtap usb vde virgl virtfs xattr xdp xen bzip2 io-uring jack lzo opengl udev -vnc zstd
+app-emulation/qemu QEMU_USER_TARGETS: x86_64
 
 # Serve per la configurazione di nginx sul binhost
 app-misc/mime-types nginx
