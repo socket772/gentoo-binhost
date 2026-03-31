@@ -54,7 +54,7 @@ kde-apps/kio-extras mtp ios nsf taglib
 media-video/pipewire jack-client libcamera sound-server pipewire-alsa pulseaudio sound-server
 
 # Configurazione QEMU
-app-emulation/qemu alsa bpf fuse ncurses pulseaudio sdl sdl-image spice ssh systemtap usb vde virgl virtfs xattr xdp xen bzip2 io-uring jack lzo opengl udev -vnc zstd
+app-emulation/qemu alsa bpf fuse ncurses pulseaudio sdl sdl-image spice ssh systemtap usb vde virgl virtfs xattr xdp bzip2 io-uring jack lzo opengl udev -vnc zstd
 app-emulation/qemu QEMU_USER_TARGETS: x86_64
 
 # Serve per la configurazione di nginx sul binhost
@@ -110,6 +110,9 @@ dev-games/godot raycast double-precision
 # Configurazione wpa_supplicant per tutti i wifi
 net-wireless/wpa_supplicant tkip wep wps
 
+# Configurazione lvm2
+sys-fs/lvm2 nvme
+
 # Configurazione rust/rust-bin
 dev-lang/rust rust-analyzer rust-src rustfmt
 dev-lang/rust-bin rust-analyzer rust-src rustfmt
@@ -129,6 +132,13 @@ app-office/libreoffice -mariadb -gtk3 gstreamer kde pdfimport qt6 vulkan
 # Rimozione funzioni extra di keepassxc
 app-admin/keepassxc -keyring -network -ssh-agent
 
+# Configurazione per selinux
+sys-libs/libselinux python
+sys-process/audit python
+
+# Funzioni di eclean-kernel
+app-admin/eclean-kernel lz4 lzo zstd
+
 # Configurazione vari tipi di compressione
 app-arch/xz-utils pgo
 app-arch/7zip rar
@@ -136,6 +146,12 @@ app-arch/zip bzip2 crypt natspec
 app-arch/unzip bzip2 natspec
 app-arch/zstd lz4 zlib
 sys-libs/zlib minizip
+
+# Configurazione di gnupg
+app-crypt/gnupg wks-server
+
+# Config per tauri
+dev-libs/libdbusmenu gtk3
 
 # Necessarie per diverse dipendenze
 sys-devel/gcc objc
