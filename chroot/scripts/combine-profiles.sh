@@ -40,7 +40,7 @@ EOF
 
 # 7. File opzionali ma consigliati per evitare errori di scansione
 touch "${PROFILE_PATH}/make.defaults"
-echo "true" > "${PROFILE_PATH}/packages"
+echo "" > "${PROFILE_PATH}/packages"
 
 # 8. Configurazione repos.conf per il sistema
 cat <<EOF > "/etc/portage/repos.conf/${REPO_NAME}.conf"
