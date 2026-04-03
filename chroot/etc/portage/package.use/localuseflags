@@ -12,7 +12,7 @@
 */* L10N: -* en en-US it
 
 # Useflags abilitate globalmente
-*/* taglib unicode wayland systemd plasma vulkan gles2 vdpau vaapi bluetooth flatpak systemd-boot screencast pipewire cups X networkmanager sddm seccomp policykit dist-kernel sdl dbus
+*/* taglib unicode wayland systemd plasma vulkan gles2 vdpau vaapi bluetooth flatpak systemd-boot screencast pipewire cups X networkmanager sddm seccomp policykit dist-kernel sdl dbus vulkan
 
 # Useflags disabilitate globalmente
 */* -kwallet -debug -handbook -grub -bios -consolekit -gnome -gtk -webengine -telemetry
@@ -27,6 +27,9 @@ sys-kernel/linux-firmware compress-zstd savedconfig
 sys-apps/systemd boot cryptsetup tpm
 sys-kernel/installkernel dracut systemd-boot
 sys-kernel/dracut dracut-cpio systemd
+
+# Configurazione per mesa
+media-libs/mesa lm-sensors opencl osmesa vulkan-overlay
 
 # Abilita il blocco schermo di kwin
 kde-plasma/kwin lock
@@ -49,6 +52,9 @@ kde-apps/kolourpaint scanner
 kde-apps/ark zip
 kde-apps/kalarm -pim
 kde-apps/kio-extras mtp ios nsf taglib
+
+# Configurazione rdp
+net-misc/freerdp server
 
 # Server audio scelto con plugin per jack, alsa e pulseaudio
 media-video/pipewire jack-client libcamera sound-server pipewire-alsa pulseaudio sound-server
