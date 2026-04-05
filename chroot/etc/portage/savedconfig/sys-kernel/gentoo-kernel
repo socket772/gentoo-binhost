@@ -1929,7 +1929,8 @@ CONFIG_FW_LOADER=y
 CONFIG_FW_LOADER_DEBUG=y
 CONFIG_FW_LOADER_PAGED_BUF=y
 CONFIG_FW_LOADER_SYSFS=y
-CONFIG_EXTRA_FIRMWARE=""
+CONFIG_EXTRA_FIRMWARE="admpgu/Renoir_as.bin adu/nir_ce.bin amdgpu/renoirdmcub.bin  amgpu/renoir_me.bin amdgpu/renoir_mec.bin amdgpu/renoir_mec2.bin amdgpu/renoir_pfp.bin  amdgpu/renoir_sdma.bin amdgpu/renoir_ta.bin amdgpu/renoir_vcn.bin amdgpu/renoir_gpu_info.bn amdgpu/renoir_rlc.bin"
+CONFIG_EXTRA_FIRMWARE_DIR="/lib/firmware"
 # CONFIG_FW_LOADER_USER_HELPER is not set
 CONFIG_FW_LOADER_COMPRESS=y
 CONFIG_FW_LOADER_COMPRESS_XZ=y
@@ -7700,7 +7701,6 @@ CONFIG_ARCH_HAS_FAST_MULTIPLIER=y
 CONFIG_ARCH_USE_SYM_ANNOTATIONS=y
 CONFIG_CRC16=y
 CONFIG_CRC_CCITT=y
-CONFIG_CRC_ITU_T=m
 CONFIG_CRC_T10DIF=y
 CONFIG_CRC_T10DIF_ARCH=y
 CONFIG_CRC32=y

@@ -6,7 +6,8 @@
 */* INPUT_DEVICES: wacom libinput evdev synaptics
 
 # Suporto per le schede video AMD
-*/* VIDEO_CARDS: -* amdgpu radeonsi radeon
+*/* VIDEO_CARDS: -* amdgpu radeonsi
+x11-libs/libdrm VIDEO_CARDS: radeon
 
 # Localizzazione, solo italiano e inglese americano
 */* L10N: -* en en-US it
@@ -55,6 +56,7 @@ kde-apps/kio-extras mtp ios nsf taglib
 
 # Configurazione rdp
 net-misc/freerdp server
+
 
 # Server audio scelto con plugin per jack, alsa e pulseaudio
 media-video/pipewire jack-client libcamera sound-server pipewire-alsa pulseaudio sound-server
