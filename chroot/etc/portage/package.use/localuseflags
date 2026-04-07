@@ -22,7 +22,7 @@ x11-libs/libdrm VIDEO_CARDS: radeon
 sys-kernel/gentoo-kernel savedconfig
 
 # Impostazioni per il linux-firmware
-sys-kernel/linux-firmware compress-zstd savedconfig
+sys-kernel/linux-firmware savedconfig
 
 # Abilitazione di systemd-boot e root criptata
 sys-apps/systemd boot cryptsetup tpm
@@ -139,10 +139,6 @@ app-office/libreoffice -mariadb -gtk3 gstreamer kde pdfimport qt6 vulkan
 
 # Rimozione funzioni extra di keepassxc
 app-admin/keepassxc -keyring -network -ssh-agent
-
-# Configurazione per selinux
-sys-libs/libselinux python
-sys-process/audit python
 
 # Funzioni di eclean-kernel
 app-admin/eclean-kernel lz4 lzo zstd
