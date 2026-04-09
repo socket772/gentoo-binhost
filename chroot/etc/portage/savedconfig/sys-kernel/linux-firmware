@@ -1,10 +1,13 @@
 regulatory.db
 regulatory.db.p7s
+
 mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
-mediatek/WIFI_RAM_CODE_MT7961_1.bin
+mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin
 mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin
+mediatek/WIFI_MT7961_patch_mcu_1a_2_hdr.bin
 mediatek/WIFI_RAM_CODE_MT7961_1.bin
-mediatek/WIFI_RAM_CODE_MT7961_1.bin
+mediatek/WIFI_RAM_CODE_MT7961_1a.bin
+
 rtl_nic/rtl8168h-2.fw
 
 amdgpu/renoir_asd.bin
